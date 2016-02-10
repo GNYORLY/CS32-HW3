@@ -10,7 +10,12 @@ bool somePredicate(double x)
 // least one of the array elements, false otherwise.
 bool anyTrue(const double a[], int n)
 {
-	return false;  // This is not always correct.
+	if (n <= 0)
+		return false;
+	if (somePredicate(a[n-1]))
+		return true;
+	else
+		anyTrue(a, n - 1);
 }
 
 // Return the number of elements in the array for which the
